@@ -9,7 +9,7 @@
   <meta property="og:description" content="Szkolenia, doradztwo i narzędzia do skutecznego zarządzania projektami.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#173B5E">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/config.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -21,8 +21,7 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="logo" href="index.html" aria-label="Consultrain — strona główna">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#173B5E"/><path d="M21.5 11.2A7 7 0 1 0 21.5 20.8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="23" cy="16" r="2.4" fill="#F28C28"/></svg>
-      Consultrain
+      <img src="img/logo-consultrain.png" alt="Consultrain" width="112" height="52">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -30,31 +29,13 @@
     </button>
     <nav class="nav" id="main-nav" aria-label="Główna nawigacja" data-open="true">
       <ul class="nav__list">
-        <li class="nav__item">
-          <button class="nav__link" type="button" data-dropdown aria-expanded="false" aria-controls="dd-szkolenia">Szkolenia
-            <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-          <ul class="dropdown" id="dd-szkolenia" hidden>
-            <li><a href="w-przygotowaniu.html?strona=szkolenia">Wszystkie szkolenia</a></li>
-            <li><a href="w-przygotowaniu.html?strona=podstawy-zarzadzania-projektami">Podstawy zarządzania projektami</a></li>
-            <li><a href="w-przygotowaniu.html?strona=szkolenia-terminy">Terminy i zapisy</a></li>
-          </ul>
-        </li>
-        <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=doradztwo">Doradztwo</a></li>
-        <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=ratowanie-projektow">Ratowanie projektów</a></li>
-        <li class="nav__item">
-          <button class="nav__link" type="button" data-dropdown aria-expanded="false" aria-controls="dd-cockpit">Project Cockpit
-            <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-          <ul class="dropdown" id="dd-cockpit" hidden>
-            <li><a href="w-przygotowaniu.html?strona=project-cockpit">Poznaj aplikację</a></li>
-            <li><a href="w-przygotowaniu.html?strona=project-cockpit-funkcje">Funkcje</a></li>
-            <li><a href="w-przygotowaniu.html?strona=project-cockpit-cennik">Cennik</a></li>
-            <li><a href="w-przygotowaniu.html?strona=logowanie">Zaloguj się</a></li>
-          </ul>
-        </li>
+        <li class="nav__item"><a class="nav__link" href="szkolenia.html">Szkolenia</a></li>
+        <li class="nav__item"><a class="nav__link" href="uslugi.html">Usługi</a></li>
+        <li class="nav__item"><a class="nav__link" href="project-cockpit.html">Project Cockpit</a></li>
         <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
-        <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=o-firmie">O firmie</a></li>
+        <li class="nav__item"><a class="nav__link" href="o-firmie.html">O firmie</a></li>
       </ul>
-      <a class="btn btn--primary" href="w-przygotowaniu.html?strona=kontakt">Kontakt</a>
+      <a class="btn btn--primary btn--sm" href="kontakt.html">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -68,10 +49,10 @@
         <h1 id="hero-title">Projekty pod kontrolą. Cele osiągnięte.</h1>
         <p class="lead">Praktyczna wiedza, profesjonalne wsparcie i narzędzia do skutecznego zarządzania projektami. Pomagam lepiej planować pracę, kontrolować realizację i podejmować świadome decyzje — od pierwszego projektu po sytuacje wymagające szybkiej interwencji.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="w-przygotowaniu.html?strona=szkolenia">Zobacz szkolenia</a>
-          <a class="btn btn--secondary" href="w-przygotowaniu.html?strona=project-cockpit">Poznaj Project Cockpit</a>
+          <a class="btn btn--primary" href="uslugi.html">Nasze usługi</a>
+          <a class="btn btn--secondary" href="project-cockpit.html">Poznaj Project Cockpit</a>
         </div>
-        <p class="hero__aside-link"><a class="text-link" href="w-przygotowaniu.html?strona=ratowanie-projektow">Twój projekt jest zagrożony? Porozmawiajmy.</a></p>
+        <p class="hero__aside-link"><a class="text-link" href="stabilizowanie-projektow.html">Twój projekt jest zagrożony? Porozmawiajmy.</a></p>
       </div>
       <!-- Schemat poglądowy cyklu planowania i kontroli — NIE jest zrzutem aplikacji -->
       <figure class="hero__figure">
@@ -117,19 +98,19 @@
           <div class="card__index">01 — Szkolenia</div>
           <h3>Rozwijam kompetencje</h3>
           <p>Poznaj podstawy zarządzania projektami, zrozum najważniejsze zasady i przećwicz ich zastosowanie w praktyce.</p>
-          <a class="text-link" href="w-przygotowaniu.html?strona=szkolenia">Zobacz szkolenia</a>
+          <a class="text-link" href="szkolenia.html">Zobacz szkolenia</a>
         </article>
         <article class="card">
           <div class="card__index">02 — Doradztwo</div>
           <h3>Potrzebuję wsparcia w projekcie</h3>
           <p>Uporządkuj sytuację, zidentyfikuj najważniejsze problemy i ustal działania, które pomogą odzyskać kontrolę nad projektem.</p>
-          <a class="text-link" href="w-przygotowaniu.html?strona=doradztwo">Poznaj możliwości doradztwa</a>
+          <a class="text-link" href="doradztwo.html">Poznaj możliwości doradztwa</a>
         </article>
         <article class="card">
           <div class="card__index">03 — Narzędzie</div>
           <h3>Szukam narzędzia</h3>
           <p>Zyskaj przejrzysty obraz projektu i narzędzie wspierające codzienną pracę kierownika projektu.</p>
-          <a class="text-link" href="w-przygotowaniu.html?strona=project-cockpit">Poznaj Project Cockpit</a>
+          <a class="text-link" href="project-cockpit.html">Poznaj Project Cockpit</a>
         </article>
       </div>
     </div>
@@ -153,7 +134,7 @@
         <h2 id="rescue-title">Projekt nie idzie zgodnie z planem?</h2>
         <p>Opóźnienia, rosnące koszty, niejasne priorytety i brak wiarygodnej informacji o postępie mogą sprawić, że trudno ocenić, co naprawdę dzieje się w projekcie.</p>
         <p>Pomagamy uporządkować sytuację, rozpoznać kluczowe problemy, ustalić priorytety i przygotować plan działań naprawczych dopasowany do konkretnego projektu.</p>
-        <a class="btn btn--primary" href="w-przygotowaniu.html?strona=ratowanie-projektow">Porozmawiajmy o Twoim projekcie</a>
+        <a class="btn btn--primary" href="stabilizowanie-projektow.html">Porozmawiajmy o Twoim projekcie</a>
       </div>
       <ul class="card" style="list-style:none;margin:0;gap:.9rem" aria-label="Typowe sygnały ostrzegawcze">
         <li><span class="badge badge--warn">Opóźnienia</span></li>
@@ -172,8 +153,8 @@
         <h2 id="cockpit-title">Większa przejrzystość w zarządzaniu projektem</h2>
         <p>Project Cockpit to przeglądarkowa aplikacja wspierająca zarządzanie projektami. Jej celem jest ułatwienie dostępu do informacji, monitorowania sytuacji i koncentrowania uwagi na sprawach wymagających działania.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="w-przygotowaniu.html?strona=project-cockpit">Poznaj aplikację</a>
-          <a class="btn btn--ghost-light btn" href="w-przygotowaniu.html?strona=project-cockpit-cennik">Sprawdź licencje</a>
+          <a class="btn btn--primary" href="project-cockpit.html">Poznaj aplikację</a>
+          <a class="btn btn--ghost-light btn" href="project-cockpit.html#cennik">Sprawdź licencje</a>
         </div>
       </div>
       <!-- Miejsce na AUTENTYCZNY zrzut ekranu — celowo bez fikcyjnej grafiki aplikacji -->
@@ -201,9 +182,9 @@
       <h2 id="final-title">Zacznij od tego, czego potrzebujesz</h2>
       <p>Chcesz zdobyć nowe kompetencje, uporządkować projekt czy usprawnić codzienną pracę? Wybierz odpowiednią ścieżkę i zrób pierwszy krok.</p>
       <div class="btn-row" style="margin-top:var(--space-3)">
-        <a class="btn btn--primary" href="w-przygotowaniu.html?strona=szkolenia">Wybierz szkolenie</a>
-        <a class="btn btn--ghost-light" href="w-przygotowaniu.html?strona=kontakt">Skontaktuj się</a>
-        <a class="btn btn--ghost-light" href="w-przygotowaniu.html?strona=project-cockpit">Poznaj Project Cockpit</a>
+        <a class="btn btn--primary" href="szkolenia.html">Wybierz szkolenie</a>
+        <a class="btn btn--ghost-light" href="kontakt.html">Skontaktuj się</a>
+        <a class="btn btn--ghost-light" href="project-cockpit.html">Poznaj Project Cockpit</a>
       </div>
     </div>
   </section>
@@ -214,27 +195,28 @@
   <div class="container">
     <div class="footer-cols">
       <div><h2>Szkolenia</h2><ul>
+        <li><a href="szkolenia.html">Wszystkie szkolenia</a></li>
         <li><a href="w-przygotowaniu.html?strona=podstawy-zarzadzania-projektami">Podstawy zarządzania projektami</a></li>
         <li><a href="w-przygotowaniu.html?strona=szkolenia-terminy">Terminy i zapisy</a></li>
         <li><a href="w-przygotowaniu.html?strona=regulamin-szkolen">Regulamin szkoleń</a></li></ul></div>
       <div><h2>Usługi</h2><ul>
-        <li><a href="w-przygotowaniu.html?strona=doradztwo">Doradztwo</a></li>
-        <li><a href="w-przygotowaniu.html?strona=ratowanie-projektow">Ratowanie projektów</a></li></ul></div>
+        <li><a href="uslugi.html">Wszystkie usługi</a></li>
+        <li><a href="doradztwo.html">Doradztwo</a></li>
+        <li><a href="stabilizowanie-projektow.html">Stabilizowanie projektów</a></li></ul></div>
       <div><h2>Project Cockpit</h2><ul>
-        <li><a href="w-przygotowaniu.html?strona=project-cockpit">Poznaj aplikację</a></li>
-        <li><a href="w-przygotowaniu.html?strona=project-cockpit-funkcje">Funkcje</a></li>
-        <li><a href="w-przygotowaniu.html?strona=project-cockpit-cennik">Cennik</a></li>
-        <li><a href="w-przygotowaniu.html?strona=project-cockpit-pomoc">Pomoc</a></li></ul></div>
+        <li><a href="project-cockpit.html#poznaj">Poznaj aplikację</a></li>
+        <li><a href="project-cockpit.html#funkcje">Funkcje</a></li>
+        <li><a href="project-cockpit.html#cennik">Cennik</a></li></ul></div>
       <div><h2>Wiedza i kontakt</h2><ul>
         <li><a href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
-        <li><a href="w-przygotowaniu.html?strona=o-firmie">O firmie</a></li>
-        <li><a href="w-przygotowaniu.html?strona=kontakt">Kontakt</a></li></ul></div>
+        <li><a href="o-firmie.html">O firmie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p id="company-data" style="margin:0"></p>
       <ul>
         <li><a href="w-przygotowaniu.html?strona=regulamin">Regulamin</a></li>
-        <li><a href="w-przygotowaniu.html?strona=polityka-prywatnosci">Polityka prywatności</a></li>
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
         <li><button type="button" class="linklike" id="cookie-settings">Ustawienia cookies</button></li>
         <li>© <span id="year"></span> Consultrain</li>
       </ul>
