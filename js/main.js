@@ -2,7 +2,7 @@
  * Consultrain — skrypt strony (Etap 1). Vanilla JS, bez bibliotek.
  *
  * Moduły:
- *  1. Nawigacja: menu mobilne + rozwijane podmenu (klawiatura: Enter/Spacja, Esc, Tab)
+ *  1. Nawigacja: menu mobilne (Esc zamyka); bez list rozwijanych
  *  2. Renderowanie danych szkolenia z config.js (formaty PL, strefa Europe/Warsaw)
  *  3. Renderowanie artykułów (maks. 3)
  *  4. Stopka: dane firmy, rok, znaczniki „Do uzupełnienia”
@@ -37,35 +37,10 @@
   mq.addEventListener ? mq.addEventListener("change", syncLayout) : mq.addListener(syncLayout);
   syncLayout();
 
-  // Podmenu: przycisk z aria-expanded steruje listą o id z aria-controls
-  var triggers = Array.prototype.slice.call(document.querySelectorAll("[data-dropdown]"));
-  function closeAll(except) {
-    triggers.forEach(function (t) {
-      if (t === except) return;
-      t.setAttribute("aria-expanded", "false");
-      document.getElementById(t.getAttribute("aria-controls")).hidden = true;
-    });
-  }
-  triggers.forEach(function (t) {
-    var menu = document.getElementById(t.getAttribute("aria-controls"));
-    t.addEventListener("click", function () {
-      var open = t.getAttribute("aria-expanded") !== "true";
-      closeAll(t);
-      t.setAttribute("aria-expanded", String(open));
-      menu.hidden = !open;
-    });
-    // Zamknięcie podmenu, gdy fokus opuści cały element (Tab)
-    t.parentElement.addEventListener("focusout", function (e) {
-      if (!t.parentElement.contains(e.relatedTarget) && !mq.matches) { t.setAttribute("aria-expanded", "false"); menu.hidden = true; }
-    });
-  });
+  // Esc zamyka menu mobilne (menu główne nie ma list rozwijanych — etap 2)
   document.addEventListener("keydown", function (e) {
-    if (e.key !== "Escape") return;
-    var open = triggers.filter(function (t) { return t.getAttribute("aria-expanded") === "true"; })[0];
-    if (open) { closeAll(); open.focus(); }
-    else if (toggle && toggle.getAttribute("aria-expanded") === "true") { setMobileOpen(false); toggle.focus(); }
+    if (e.key === "Escape" && toggle && toggle.getAttribute("aria-expanded") === "true") { setMobileOpen(false); toggle.focus(); }
   });
-  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item")) closeAll(); });
 
   /* ---------- 2. Szkolenie główne ---------- */
   var tEl = document.getElementById("training-facts");
@@ -124,4 +99,127 @@
   if (ck) ck.addEventListener("click", function () {
     alert("Ta strona nie używa plików cookies ani narzędzi śledzących. Nie ma ustawień do zmiany.");
   });
+
+  /* ---------- 5. Animacje przy przewijaniu i aktywna sekcja (etap 3) ----------
+   * Elementy .reveal pojawiają się, gdy wejdą w widok. Brak animacji przy
+   * prefers-reduced-motion lub braku IntersectionObserver (treść zawsze widoczna). */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
+  if (reveals.length && "IntersectionObserver" in window && !reduce) {
+    document.documentElement.classList.add("js-reveal");
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-visible"); ro.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { ro.observe(el); });
+  }
+  // Podświetlenie bieżącej sekcji w pasku .pc-subnav
+  var subLinks = document.querySelectorAll(".pc-subnav a[href^='#']");
+  if (subLinks.length && "IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        subLinks.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + en.target.id); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    subLinks.forEach(function (a) { var t = document.querySelector(a.getAttribute("href")); if (t) so.observe(t); });
+  }
+
+  /* ---------- 6. Przycisk „do góry” (etap 4) ---------- */
+  var toTop = document.querySelector(".to-top");
+  if (toTop) {
+    var onScroll = function () { toTop.classList.toggle("is-visible", window.scrollY > 500); };
+    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    toTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+  }
+
+  /* ---------- 7. Formularz kontaktowy (etap 4) ----------
+   * Walidacja po stronie przeglądarki + ochrona przed botami:
+   *  - losowe działanie do rozwiązania,
+   *  - ukryte pole-pułapka (wypełnia je tylko bot),
+   *  - minimalny czas 3 s od wczytania strony.
+   * Najwcześniejsza data kontaktu: dziś + 3 dni robocze (bez sob./niedz.). */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var CEL = { licencja: "Zapytanie o licencję", doradztwo: "Zapytanie o usługę doradczą", szkolenie: "Zapytanie o szkolenie" };
+    var loadedAt = Date.now();
+    var f = form.elements;
+    var cf = cfg.contactForm || {};
+
+    /** Zwraca datę przesuniętą o n dni roboczych (pomija soboty i niedziele). */
+    function addWorkdays(d, n) {
+      var r = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      while (n > 0) { r.setDate(r.getDate() + 1); var w = r.getDay(); if (w !== 0 && w !== 6) n--; }
+      return r;
+    }
+    function isoLocal(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+    var minDate = isoLocal(addWorkdays(new Date(), 3));
+    f.termin.min = minDate;
+    document.getElementById("termin-hint").textContent = "Najwcześniej: " + minDate.split("-").reverse().join(".");
+
+    // Wstępny wybór celu z adresu, np. kontakt.html?cel=licencja&pakiet=professional
+    var qs = new URLSearchParams(location.search);
+    // "stabilizacja" (strona Stabilizowanie projektów) to też usługa doradcza
+    var celQ = qs.get("cel") === "stabilizacja" ? "doradztwo" : qs.get("cel");
+    if (CEL[celQ]) f.cel.value = celQ;
+    var pakiet = { starter: "Starter", professional: "Professional", enterprise: "Enterprise" }[qs.get("pakiet")];
+    if (pakiet) { f.cel.value = "licencja"; f.tresc.value = "Pakiet: " + pakiet + "\n"; }
+
+    // Licznik znaków
+    var counter = document.getElementById("tresc-licznik");
+    function updCount() { counter.textContent = "Pozostało: " + (500 - f.tresc.value.length) + " znaków"; }
+    f.tresc.addEventListener("input", updCount); updCount();
+
+    // Gwiazdka przy e-mailu / telefonie zależnie od formy kontaktu
+    function updReq() {
+      document.querySelector('[data-req="email"]').textContent = f.forma.value === "email" ? "*" : "";
+      document.querySelector('[data-req="telefon"]').textContent = f.forma.value === "telefon" ? "*" : "";
+    }
+    f.forma.addEventListener("change", updReq); updReq();
+
+    // Zadanie anty-botowe
+    var a, b;
+    function newCaptcha() { a = 2 + Math.floor(Math.random() * 8); b = 1 + Math.floor(Math.random() * 9); document.getElementById("captcha-q").textContent = "ile to jest " + a + " + " + b + "?"; f.captcha.value = ""; }
+    newCaptcha();
+
+    if (!cf.email) document.getElementById("form-config-notice").innerHTML =
+      '<div class="notice notice--warn" role="status" style="margin-bottom:var(--space-3)"><p>Adres do wysyłki zapytań jest w przygotowaniu.</p></div>';
+
+    var errBox = document.getElementById("form-errors");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var errs = [], v = function (n) { return f[n].value.trim(); };
+      form.querySelectorAll("[aria-invalid]").forEach(function (el) { el.removeAttribute("aria-invalid"); });
+      function bad(n, msg) { errs.push(msg); f[n].setAttribute("aria-invalid", "true"); }
+      if (!CEL[v("cel")]) bad("cel", "Wybierz cel kontaktu.");
+      if (v("imie").length < 2) bad("imie", "Podaj imię i nazwisko.");
+      if (!v("termin") || v("termin") < minDate) bad("termin", "Wybierz datę nie wcześniejszą niż " + minDate.split("-").reverse().join(".") + ".");
+      if (!v("forma")) bad("forma", "Wybierz preferowaną formę kontaktu.");
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v("email"));
+      if ((v("forma") === "email" || v("email")) && !emailOk) bad("email", "Podaj poprawny adres e-mail.");
+      var telOk = /^\+?[0-9 ()-]{9,20}$/.test(v("telefon"));
+      if ((v("forma") === "telefon" || v("telefon")) && !telOk) bad("telefon", "Podaj poprawny numer telefonu.");
+      if (v("tresc").length < 10) bad("tresc", "Treść zapytania powinna mieć co najmniej 10 znaków.");
+      if (parseInt(v("captcha"), 10) !== a + b) bad("captcha", "Błędny wynik działania weryfikacyjnego.");
+      if (!f.zgoda.checked) bad("zgoda", "Zaznacz zgodę na przetwarzanie danych.");
+      if (errs.length) {
+        errBox.hidden = false; errBox.querySelector("p").innerHTML = errs.map(esc).join("<br>");
+        if (f.captcha.getAttribute("aria-invalid")) newCaptcha();
+        form.querySelector("[aria-invalid]").focus(); return;
+      }
+      // Bot: wypełnione pole-pułapka lub zbyt szybkie wysłanie → udajemy sukces, nic nie wysyłamy
+      var isBot = f.website.value !== "" || Date.now() - loadedAt < 3000;
+      if (!isBot && cf.email) {
+        var subject = (cf.subjectPrefix || "Zapytanie ze strony") + ": " + CEL[v("cel")];
+        var body = ["Cel: " + CEL[v("cel")], "Imię i nazwisko: " + v("imie"), "Firma: " + (v("firma") || "-"),
+          "Kontakt najpóźniej do: " + v("termin").split("-").reverse().join("."), "Forma kontaktu: " + (v("forma") === "email" ? "e-mail" : "telefon"),
+          "E-mail: " + (v("email") || "-"), "Telefon: " + (v("telefon") || "-"), "", v("tresc")].join("\n");
+        location.href = "mailto:" + cf.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      }
+      form.hidden = true;
+      var t = document.getElementById("form-thanks"); t.hidden = false; t.focus();
+    });
+  }
 })();
