@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Cockpit | Consultrain</title>
+  <meta name="description" content="Project Cockpit — pełna kontrola projektu w jednym miejscu. Monitoruj stan projektu, szybciej wykrywaj zagrożenia i podejmuj lepsze decyzje.">
+  <meta property="og:title" content="Project Cockpit | Consultrain">
+  <meta property="og:description" content="Project Cockpit — pełna kontrola projektu w jednym miejscu. Monitoruj stan projektu, szybciej wykrywaj zagrożenia i podejmuj lepsze decyzje.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#22302F">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="index.html" aria-label="Consultrain — strona główna">
+      <img src="img/logo-consultrain.png" alt="Consultrain" width="112" height="52">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>Menu</span>
+    </button>
+    <nav class="nav" id="main-nav" aria-label="Główna nawigacja" data-open="true">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="szkolenia.html">Szkolenia</a></li>
+        <li class="nav__item"><a class="nav__link" href="uslugi.html">Usługi</a></li>
+        <li class="nav__item"><a class="nav__link" href="project-cockpit.html" aria-current="page">Project Cockpit</a></li>
+        <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
+        <li class="nav__item"><a class="nav__link" href="o-firmie.html">O firmie</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm" href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="pc">
+  <!-- Pasek sekcji (sticky pod menu głównym) -->
+  <nav class="pc-subnav" aria-label="Sekcje strony Project Cockpit">
+    <div class="pc-wrap pc-subnav__inner">
+      <span class="pc-subnav__brand">Project Cockpit</span>
+      <ul>
+        <li><a href="#poznaj">Poznaj aplikację</a></li>
+        <li><a href="#funkcje">Funkcje</a></li>
+        <li><a href="#cennik">Cennik</a></li>
+        <li><a href="kontakt.html?cel=licencja">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pc-hero">
+    <div class="pc-wrap pc-hero__grid">
+      <div class="reveal">
+        <p class="pc-eyebrow">Aplikacja do zarządzania projektami</p>
+        <div class="pc-hero__title"><h1>Project Cockpit</h1><img src="img/logo-project-cockpit.png" alt="Logo Project Cockpit" width="163" height="160"></div>
+        <p class="pc-hero__claim">Pełna kontrola projektu. Jedno miejsce. Lepsze decyzje.</p>
+        <p class="pc-lead">Poświęcaj mniej czasu na zbieranie informacji o projekcie, a więcej na jego skuteczne prowadzenie. Project Cockpit pomaga monitorować stan projektu, szybciej identyfikować zagrożenia i podejmować decyzje w oparciu o aktualne dane.</p>
+        <div class="btn-row">
+          <a class="btn pc-btn" href="#funkcje">Zobacz funkcje</a>
+          <a class="btn btn--secondary" href="#cennik">Sprawdź cennik</a>
+        </div>
+      </div>
+      <!-- Ilustracja panelu: dane przykładowe, rysowane w HTML/SVG -->
+      <figure class="pc-dash reveal" aria-label="Przykładowa wizualizacja panelu projektu">
+        <div class="pc-dash__bar"><span></span><span></span><span></span><strong>Projekt: Wdrożenie systemu</strong><em class="pc-pill pc-pill--ok">Na dobrej drodze</em></div>
+        <div class="pc-kpis">
+          <div><small>Postęp</small><b>68%</b><i style="--w:68%"></i></div>
+          <div><small>Budżet</small><b>54%</b><i style="--w:54%"></i></div>
+          <div><small>Ryzyka</small><b>3</b><i class="warn" style="--w:30%"></i></div>
+        </div>
+        <div class="pc-dash__row">
+          <div class="pc-panel">
+            <small>Harmonogram</small>
+            <div class="pc-gantt">
+              <span style="--s:0%;--l:35%">Analiza</span>
+              <span style="--s:25%;--l:40%">Projekt</span>
+              <span style="--s:55%;--l:30%" class="cur">Wdrożenie</span>
+              <span style="--s:80%;--l:20%" class="next">Odbiór</span>
+            </div>
+          </div>
+          <div class="pc-panel">
+            <small>Koszty narastająco</small>
+            <svg viewBox="0 0 160 70" class="pc-chart" aria-hidden="true">
+              <polyline points="0,62 25,55 50,47 75,40 100,30 125,24 160,14" class="plan"/>
+              <polyline points="0,64 25,58 50,50 75,41 100,33 125,29" class="real"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pc-panel">
+          <small>Najważniejsze ryzyka</small>
+          <ul class="pc-risks">
+            <li><em class="pc-pill pc-pill--err">Wysokie</em> Opóźnienie dostawcy</li>
+            <li><em class="pc-pill pc-pill--warn">Średnie</em> Dostępność zespołu</li>
+            <li><em class="pc-pill pc-pill--ok">Niskie</em> Zmiana zakresu</li>
+          </ul>
+        </div>
+        <figcaption>Ilustracja poglądowa, dane przykładowe.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SEKCJA 1: POZNAJ APLIKACJĘ -->
+  <section class="pc-section" id="poznaj">
+    <div class="pc-wrap">
+      <div class="pc-head reveal">
+        <p class="pc-eyebrow">Poznaj aplikację</p>
+        <h2>Pełna kontrola projektu bez zbędnej biurokracji</h2>
+      </div>
+      <div class="pc-text reveal">
+        <p>Kierownik projektu każdego dnia podejmuje dziesiątki decyzji. Problem w tym, że potrzebne informacje często znajdują się w różnych plikach, raportach i rejestrach, a ich zebranie zajmuje więcej czasu niż sama analiza.</p>
+        <p>Project Cockpit powstał po to, aby uprościć ten proces.</p>
+        <p>To lekkie narzędzie wspierające zarządzanie projektami, które pomaga szybko zorientować się w sytuacji projektu i skupić uwagę na tym, co naprawdę wymaga reakcji.</p>
+        <p>Zamiast przeglądać kolejne arkusze, aktualizować prezentacje i ręcznie przygotowywać statusy, otrzymujesz przejrzysty obraz projektu w jednym miejscu.</p>
+      </div>
+      <div class="pc-tiles">
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span><h3>Szybka ocena stanu projektu</h3></div>
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Lepsza kontrola harmonogramu</h3></div>
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2-3-2s-3 .8-3 2 1.3 1.8 3 2.2 3 1 3 2.3-1.3 2-3 2-3-.7-3-2"/></svg></span><h3>Kontrola budżetu</h3></div>
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span><h3>Wcześniejsza identyfikacja ryzyk</h3></div>
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></span><h3>Krótszy czas raportowania</h3></div>
+        <div class="pc-tile reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><h3>Lepsze decyzje projektowe</h3></div>
+      </div>
+      <blockquote class="pc-quote reveal">Zyskaj kontrolę nad projektami dzięki narzędziu, które jest lekkie i naturalne w obsłudze. Zapomnij o ciężkich systemach do wszystkiego i wybierz kompletne rozwiązanie dedykowane do skutecznego zarządzania.</blockquote>
+    </div>
+  </section>
+
+  <!-- SEKCJA 2: FUNKCJE -->
+  <section class="pc-section pc-section--soft" id="funkcje">
+    <div class="pc-wrap">
+      <div class="pc-head reveal">
+        <p class="pc-eyebrow">Funkcje</p>
+        <h2>Skup się na zarządzaniu projektem, nie na zbieraniu danych</h2>
+      </div>
+      <div class="pc-features">
+        <article class="pc-feature reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><h3>Jeden widok całego projektu</h3><p>Najważniejsze informacje dotyczące harmonogramu, kosztów, ryzyk i realizowanych prac dostępne są w jednym miejscu.</p></article>
+        <article class="pc-feature reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M11 8v3M11 14h.01"/></svg></span><h3>Wcześniej zauważaj problemy</h3><p>Project Cockpit pomaga wychwycić odchylenia i potencjalne zagrożenia zanim staną się realnym problemem dla projektu.</p></article>
+        <article class="pc-feature reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Podejmuj decyzje na podstawie danych</h3><p>Szybko oceniaj sytuację projektu i koncentruj się na działaniach, które mają największy wpływ na rezultat.</p></article>
+        <article class="pc-feature reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><h3>Automatyczne raportowanie</h3><p>Przygotowuj raporty dla sponsorów i interesariuszy szybciej, ograniczając czas poświęcany na ręczne opracowywanie materiałów.</p></article>
+        <article class="pc-feature pc-feature--wide reveal"><span class="pc-ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Lekki i prosty we wdrożeniu</h3>
+          <ul class="pc-checks"><li>Działa lokalnie.</li><li>Nie wymaga rozbudowanej infrastruktury.</li><li>Nie generuje wysokich kosztów utrzymania.</li><li>Wdrożenie jest szybkie i proste.</li></ul></article>
+      </div>
+      <div class="pc-why reveal">
+        <h3>Dlaczego użytkownicy wybierają Project Cockpit?</h3>
+        <ul class="pc-checks pc-checks--grid">
+          <li>Integracja danych projektowych</li>
+          <li>szybsze wykrywanie zagrożeń</li>
+          <li>oszczędność czasu kierownika projektu</li>
+          <li>przejrzyste raportowanie</li>
+          <li>niskie wymagania techniczne</li>
+          <li>szybkie uruchomienie</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKCJA 3: CENNIK (ceny do uzupełnienia — bez wymyślonych kwot) -->
+  <section class="pc-section" id="cennik">
+    <div class="pc-wrap">
+      <div class="pc-head reveal">
+        <p class="pc-eyebrow">Cennik</p>
+        <h2>Proste zasady. Bez niespodzianek.</h2>
+        <p>Wierzymy, że zakup oprogramowania powinien być tak samo przejrzysty jak zarządzanie projektem.</p>
+        <p>Dlatego Project Cockpit oferowany jest w jasnym modelu licencyjnym bez ukrytych kosztów, dodatkowo płatnych funkcji czy nieoczekiwanych dopłat pojawiających się po wdrożeniu.</p>
+      </div>
+      <div class="pc-prices">
+        <article class="pc-price reveal"><h3>Starter</h3><p class="pc-price__value">Cena do uzupełnienia</p><p class="pc-price__note">Zakres licencji zostanie opisany.</p><a class="btn btn--secondary" href="kontakt.html?cel=licencja&amp;pakiet=starter">Zapytaj o ofertę</a></article>
+        <article class="pc-price pc-price--featured reveal"><h3>Professional</h3><p class="pc-price__value">Cena do uzupełnienia</p><p class="pc-price__note">Zakres licencji zostanie opisany.</p><a class="btn pc-btn" href="kontakt.html?cel=licencja&amp;pakiet=professional">Zapytaj o ofertę</a></article>
+        <article class="pc-price reveal"><h3>Enterprise</h3><p class="pc-price__value">Cena do uzupełnienia</p><p class="pc-price__note">Zakres licencji zostanie opisany.</p><a class="btn btn--secondary" href="kontakt.html?cel=licencja&amp;pakiet=enterprise">Zapytaj o ofertę</a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANER KOŃCOWY -->
+  <section class="pc-final">
+    <div class="pc-wrap reveal">
+      <h2>Poświęcaj mniej czasu na szukanie informacji.<br>Poświęcaj więcej czasu na zarządzanie projektem.</h2>
+      <a class="btn btn--primary pc-btn--lg" href="kontakt.html?cel=licencja">Umów prezentację</a>
+    </div>
+  </section>
+  </div>
+</main>
+<a class="to-top" href="#main" aria-label="Przewiń na górę strony"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div><h2>Szkolenia</h2><ul>
+        <li><a href="szkolenia.html">Wszystkie szkolenia</a></li>
+        <li><a href="w-przygotowaniu.html?strona=podstawy-zarzadzania-projektami">Podstawy zarządzania projektami</a></li>
+        <li><a href="w-przygotowaniu.html?strona=szkolenia-terminy">Terminy i zapisy</a></li>
+        <li><a href="w-przygotowaniu.html?strona=regulamin-szkolen">Regulamin szkoleń</a></li></ul></div>
+      <div><h2>Usługi</h2><ul>
+        <li><a href="uslugi.html">Wszystkie usługi</a></li>
+        <li><a href="doradztwo.html">Doradztwo</a></li>
+        <li><a href="stabilizowanie-projektow.html">Stabilizowanie projektów</a></li></ul></div>
+      <div><h2>Project Cockpit</h2><ul>
+        <li><a href="project-cockpit.html#poznaj">Poznaj aplikację</a></li>
+        <li><a href="project-cockpit.html#funkcje">Funkcje</a></li>
+        <li><a href="project-cockpit.html#cennik">Cennik</a></li></ul></div>
+      <div><h2>Wiedza i kontakt</h2><ul>
+        <li><a href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
+        <li><a href="o-firmie.html">O firmie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p id="company-data" style="margin:0"></p>
+      <ul>
+        <li><a href="w-przygotowaniu.html?strona=regulamin">Regulamin</a></li>
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        <li><button type="button" class="linklike" id="cookie-settings">Ustawienia cookies</button></li>
+        <li>© <span id="year"></span> Consultrain</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
