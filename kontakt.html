@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt | Consultrain</title>
+  <meta name="description" content="Skontaktuj się z Consultrain: zapytanie o licencję Project Cockpit, usługę doradczą lub szkolenie.">
+  <meta property="og:title" content="Kontakt | Consultrain">
+  <meta property="og:description" content="Formularz kontaktowy Consultrain.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#173B5E">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="index.html" aria-label="Consultrain — strona główna">
+      <img src="img/logo-consultrain.png" alt="Consultrain" width="112" height="52">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>Menu</span>
+    </button>
+    <nav class="nav" id="main-nav" aria-label="Główna nawigacja" data-open="true">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="szkolenia.html">Szkolenia</a></li>
+        <li class="nav__item"><a class="nav__link" href="uslugi.html">Usługi</a></li>
+        <li class="nav__item"><a class="nav__link" href="project-cockpit.html">Project Cockpit</a></li>
+        <li class="nav__item"><a class="nav__link" href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
+        <li class="nav__item"><a class="nav__link" href="o-firmie.html">O firmie</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm" href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section"><div class="container container--narrow">
+    <div class="section__head"><p class="eyebrow">Kontakt</p><h1>Formularz kontaktowy</h1><p>Opisz krótko swoją potrzebę. Odpowiemy w preferowanej formie i terminie.</p></div>
+    <div id="form-config-notice"></div>
+    <form id="contact-form" class="cform" novalidate>
+      <!-- Pole-pułapka dla botów: niewidoczne dla ludzi -->
+      <div class="cform__hp" aria-hidden="true"><label>Nie wypełniaj tego pola <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="cform__field"><label for="cel">Cel kontaktu *</label>
+        <select id="cel" name="cel" required><option value="">Wybierz z listy</option>
+          <option value="licencja">Zapytanie o licencję</option><option value="doradztwo">Zapytanie o usługę doradczą</option><option value="szkolenie">Zapytanie o szkolenie</option></select></div>
+      <div class="cform__row">
+        <div class="cform__field"><label for="imie">Imię i nazwisko *</label><input id="imie" name="imie" type="text" maxlength="100" autocomplete="name" required></div>
+        <div class="cform__field"><label for="firma">Firma (opcjonalnie)</label><input id="firma" name="firma" type="text" maxlength="120" autocomplete="organization"></div>
+      </div>
+      <div class="cform__row">
+        <div class="cform__field"><label for="termin">Skontaktuj się najpóźniej do *</label><input id="termin" name="termin" type="date" required><small class="cform__hint" id="termin-hint"></small></div>
+        <div class="cform__field"><label for="forma">Preferowana forma kontaktu *</label>
+          <select id="forma" name="forma" required><option value="">Wybierz z listy</option><option value="email">E-mail</option><option value="telefon">Telefon</option></select></div>
+      </div>
+      <div class="cform__row">
+        <div class="cform__field"><label for="email">E-mail <span data-req="email"></span></label><input id="email" name="email" type="email" maxlength="255" autocomplete="email"></div>
+        <div class="cform__field"><label for="telefon">Telefon <span data-req="telefon"></span></label><input id="telefon" name="telefon" type="tel" maxlength="20" autocomplete="tel"></div>
+      </div>
+      <div class="cform__field"><label for="tresc">Treść zapytania *</label><textarea id="tresc" name="tresc" rows="6" maxlength="500" required></textarea><small class="cform__hint" id="tresc-licznik" aria-live="polite">Pozostało: 500 znaków</small></div>
+      <div class="cform__field cform__captcha"><label for="captcha">Weryfikacja: <span id="captcha-q"></span> *</label><input id="captcha" name="captcha" type="text" inputmode="numeric" maxlength="3" required></div>
+      <div class="cform__field"><label class="cform__check"><input type="checkbox" id="zgoda" name="zgoda" required> <span>Wyrażam zgodę na przetwarzanie moich danych w celu udzielenia odpowiedzi na zapytanie (<a href="polityka-prywatnosci.html">polityka prywatności</a>). *</span></label></div>
+      <div id="form-errors" class="notice notice--warn" role="alert" hidden><p></p></div>
+      <button type="submit" class="btn btn--primary">Wyślij zapytanie</button>
+      <p class="cform__note">* pola wymagane</p>
+    </form>
+    <div id="form-thanks" class="notice notice--info" role="status" tabindex="-1" hidden><p><strong>Dziękujemy za kontakt.</strong><br>Otrzymaliśmy Państwa zapytanie. Po analizie przekazanych informacji skontaktujemy się w preferowanej formie i terminie.</p></div>
+  </div></section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div><h2>Szkolenia</h2><ul>
+        <li><a href="szkolenia.html">Wszystkie szkolenia</a></li>
+        <li><a href="w-przygotowaniu.html?strona=podstawy-zarzadzania-projektami">Podstawy zarządzania projektami</a></li>
+        <li><a href="w-przygotowaniu.html?strona=szkolenia-terminy">Terminy i zapisy</a></li>
+        <li><a href="w-przygotowaniu.html?strona=regulamin-szkolen">Regulamin szkoleń</a></li></ul></div>
+      <div><h2>Usługi</h2><ul>
+        <li><a href="uslugi.html">Wszystkie usługi</a></li>
+        <li><a href="doradztwo.html">Doradztwo</a></li>
+        <li><a href="stabilizowanie-projektow.html">Stabilizowanie projektów</a></li></ul></div>
+      <div><h2>Project Cockpit</h2><ul>
+        <li><a href="project-cockpit.html#poznaj">Poznaj aplikację</a></li>
+        <li><a href="project-cockpit.html#funkcje">Funkcje</a></li>
+        <li><a href="project-cockpit.html#cennik">Cennik</a></li></ul></div>
+      <div><h2>Wiedza i kontakt</h2><ul>
+        <li><a href="w-przygotowaniu.html?strona=blog">Artykuły</a></li>
+        <li><a href="o-firmie.html">O firmie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p id="company-data" style="margin:0"></p>
+      <ul>
+        <li><a href="w-przygotowaniu.html?strona=regulamin">Regulamin</a></li>
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        <li><button type="button" class="linklike" id="cookie-settings">Ustawienia cookies</button></li>
+        <li>© <span id="year"></span> Consultrain</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
