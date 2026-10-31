@@ -41,7 +41,7 @@ Zgodnie z dyspozycją inwestora, w celu zachowania maksymalnej niezależności, 
 * Kolorystyka: Granat podstawowy (`#173B5E`), ciemny granat (`#0F2740`), pomarańczowy akcent CTA (`#F28C28`), jasne tło sekcji (`#F4F6F8`), ciemny grafit tekstu (`#1E2A36`).
 * Kontrast spełniający wymogi WCAG 2.2 AA.
 * Pełna responsywność (Desktop, Tablet, Mobile) z menu hamburgerowym obsługiwanym w pełni z klawiatury.
-* Nowe komponenty stylów dla podstrony Doradztwo: `.dr-claim`, `.dr-list`, `.dr-ico`, `.dr-gain`, `.dr-steps`.
+* Nowe komponenty stylów dla podstrony Doradztwo: `.dr-claim`, `.dr-list`, `.dr-ico`, `.dr-gain`, `.dr-steps`, `.dr-steps--4`.
 
 ### 2. Strona Główna (`index.html`) z 7 kompletnymi sekcjami:
 * Hero, W czym możemy Ci pomóc, Szkolenie główne, Stabilizowanie projektów, Project Cockpit, Wiedza (Blog), Końcowe CTA i Stopka.
@@ -59,7 +59,21 @@ Zgodnie z dyspozycją inwestora, w celu zachowania maksymalnej niezależności, 
 * **Dlaczego Consultrain:** Wyróżniony blok o praktycznym łączeniu perspektywy biznesowej i technologicznej.
 * **Końcowe CTA:** Granatowa sekcja zachęcająca do bezpłatnej konsultacji wstępnej (`kontakt.html?cel=doradztwo`).
 
-### 4. Plik konfiguracyjny `js/config.js`:
+### 4. Podstrona Stabilizowanie projektów (`stabilizowanie-projektow.html`):
+* **Hero podstrony:** Nadtytuł *„STABILIZOWANIE I NAPRAWA PROJEKTÓW IT”*, nagłówek *„Projekt wymyka się spod kontroli? Pomagamy odzyskać nad nim kontrolę”*, lead, wyróżniony claim *„Nie szukamy winnych. Szukamy rozwiązań.”* oraz CTA kierujące do kontaktu (`kontakt.html?cel=stabilizacja`).
+* **Kiedy projekt potrzebuje interwencji:** Wprowadzenie diagnozujące oraz lista 8 kluczowych symptomów kryzysu (opóźnienia, przekroczenia budżetu, niewywiązywanie się dostawców, nieustanna zmiana zakresu, utrata kontroli nad zadaniami, niepewne raporty postępów, narastający konflikt, brak wiarygodnych danych dla zarządu).
+* **Co robimy, aby ustabilizować projekt (4 filary działań ratunkowych):**
+  1. *Diagnoza rzeczywistej sytuacji* (ocena zaawansowania, identyfikacja przyczyn opóźnień i kosztów, weryfikacja planów dostawców, rozpoznanie najważniejszych zagrożeń).
+  2. *Plan naprawczy* (uporządkowanie zakresu i priorytetów, aktualizacja harmonogramu i budżetu, plan ograniczenia ryzyk, uzgodnienia z interesariuszami).
+  3. *Stabilizacja i odzyskanie kontroli* (nadzór nad realizacją planu, bieżąca kontrola terminów, kosztów i zakresu, uporządkowanie komunikacji i rozwiązywanie eskalacji).
+  4. *Przywrócenie przewidywalności* (wiarygodny plan dalszych prac, jasne odpowiedzialności, przejrzysty system monitorowania, regularna informacja o stanie projektu).
+* **Jakie efekty chcemy osiągnąć:** 6 wymiernych rezultatów (Odzyskanie kontroli nad harmonogramem, Ograniczenie dalszych strat, Uporządkowanie zakresu, Poprawa współpracy, Przywrócenie wiarygodnego raportowania, Realny plan zakończenia projektu) oraz etyczne zastrzeżenie dotyczące uczciwej i rzetelnej oceny szans ratunku projektu.
+* **Jak wygląda proces stabilizacji (4 kroki):** Krok 1: Szybkie rozpoznanie sytuacji, Krok 2: Niezależna ocena i diagnoza, Krok 3: Plan naprawczy, Krok 4: Wdrożenie i nadzór (zrealizowany w responsywnej siatce 4-kolumnowej `.dr-steps--4`).
+* **Dlaczego warto powierzyć nam stabilizację:** Praktyczne doświadczenie w podejmowaniu trudnych decyzji projektowych, łączenie perspektywy biznesu i IT, standardy PRINCE2, PMBoK i Agile oraz niezależność w ocenie.
+* **Końcowe CTA:** Granatowa sekcja *„Nie czekaj, aż problemy staną się jeszcze większe”* zachęcająca do rozmowy o sytuacji projektu.
+* **Wsparcie w `js/main.js`:** Inteligentne mapowanie parametru `?cel=stabilizacja` na odpowiednią opcję w formularzu kontaktowym.
+
+### 5. Plik konfiguracyjny `js/config.js`:
 * Centralne, bezpieczne miejsce do edycji danych biznesowych.
 
 ---
@@ -71,6 +85,7 @@ Kod jest publikowany w repozytorium `https://github.com/piotermaruda-cloud/stron
 ```text
 ├── index.html              # Strona główna
 ├── doradztwo.html          # Pełna podstrona Doradztwo
+├── stabilizowanie-projektow.html # Pełna podstrona Stabilizowanie i naprawa projektów IT
 ├── w-przygotowaniu.html    # Komunikat dla pozostałych podstron w trakcie prac
 ├── favicon.svg             # Lekki wektorowy logotyp serwisu
 ├── README.md               # Dokumentacja techniczna i instrukcja uruchomienia
